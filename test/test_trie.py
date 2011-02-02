@@ -51,3 +51,9 @@ class TestTrie(unittest.TestCase):
 
         for k in self.fixture:
             assert self.fixture[k] == True
+
+    def test_iterkeys(self):
+        keys = set()
+        for i in self.fixture.iterkeys():
+            keys.add(i)
+        assert keys == set(self.corpus)
