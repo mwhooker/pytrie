@@ -25,14 +25,14 @@ class Trie(object):
 
     def __setitem__(self, key, value):
         if not len(key):
-            raise ValueError('key must be non-empty')
+            raise KeyError('key must be non-empty')
         
         node = self.root
         for char in key:
             if char in node.children:
                 node = node.children[char]
             else:
-                node.children[char] = TrieNode()
+                node.children[char] = node = TrieNode()
 
         node.value = value
 
