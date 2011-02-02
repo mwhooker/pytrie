@@ -43,11 +43,20 @@ class Trie(object):
         node.value = value
 
     def __delitem__(self, key):
-        pass
+        parent_char = None
+        node = parent = self.root
+        for char in key:
+            if char in node.children:
+                parent_char = char
+                parent = node
+                node = node.children[char]
+            else:
+                raise KeyError('key does not exist')
+        if node.value:
+            del parent.children[parent_char]
 
     def __iter__(self):
         def preorder(node, path=''):
-            print "preorder: %s" % path
             for char in sorted(node.children):
                 curpath = "%s%s" % (path, char)
                 if node.children[char].value:
