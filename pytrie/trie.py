@@ -89,5 +89,16 @@ class Trie(object):
 
         return preorder(self.root)
 
+    def _path_exists(self, key):
+        node = self.root
+
+        for char in key:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return False
+
+        return True
+
     def iterkeys(self):
         return self.__iter__()

@@ -17,11 +17,19 @@ class TestTrie(unittest.TestCase):
     def test_len(self):
         assert len(self.fixture) == len(self.corpus)
 
+    def test_path_exists(self):
+        for i in self.corpus:
+            assert self.fixture._path_exists(i)
+
+        assert not self.fixture._path_exists('not a color')
+
     def test_delitem(self):
         key = self.corpus[0]
         assert self.fixture[key] == True
         del self.fixture[key]
         self.assertRaises(KeyError, self.fixture.__getitem__, key)
+
+        assert not self.fixture._path_exists(key[:-1])
 
     def test_getitem(self):
         for i in self.corpus:
