@@ -41,8 +41,8 @@ class TestTrie(unittest.TestCase):
         collected_keys = set([k for k in self.fixture])
         assert collected_keys == set(self.corpus)
 
-        for k, v in self.fixture:
-            assert v == True
+        for k in self.fixture:
+            assert self.fixture[k] == True
 
 if __name__ == '__main__':
     unittest.main()

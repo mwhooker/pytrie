@@ -48,7 +48,17 @@ class Trie(object):
         pass
 
     def __iter__(self):
-        pass
+        def preorder(node, path=''):
+            print "preorder: %s" % path
+            for char in sorted(node.children):
+                curpath = "%s%s" % (path, char)
+                if node.children[char].value:
+                    yield curpath
+                for i in preorder(node.children[char], curpath):
+                    yield i
+
+        for i in preorder(self.root):
+            yield i
 
     def __contains__(self, key):
         node = self.root
