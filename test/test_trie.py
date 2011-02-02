@@ -43,6 +43,3 @@ class TestTrie(unittest.TestCase):
 
         for k in self.fixture:
             assert self.fixture[k] == True
-
-if __name__ == '__main__':
-    unittest.main()
