@@ -51,4 +51,14 @@ class Trie(object):
         pass
 
     def __contains__(self, key):
-        pass
+        node = self.root
+        for char in key:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return False
+        if node.value:
+            return True
+
+    def iterkeys(self):
+        return self.__iter__()
