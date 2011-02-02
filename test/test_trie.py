@@ -6,8 +6,8 @@ class TestTrie(unittest.TestCase):
     def setUp(self):
         self.corpus = ['black',
                        'blue',
-                       'red',
-                       'redorange',
+                       'orange',
+                       'orangered',
                        'green',
                        'aqua marine']
         self.fixture = Trie()
