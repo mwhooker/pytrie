@@ -68,5 +68,17 @@ class Trie(object):
         if node.value:
             return True
 
+    def __str__(self):
+        def preorder(node, path=''):
+            ret = "%s%s\n" % (' ' * len(path) if len(path) > 1 else '-', path[-1:])
+            for char in sorted(node.children):
+                curpath = '%s%s' % (path, char)
+                ret += preorder(node.children[char], curpath)
+                if node.children[char].value:
+                    ret += "%s%s\n" % ('-' * len(path), curpath)
+            return ret
+
+        return preorder(self.root)
+
     def iterkeys(self):
         return self.__iter__()
