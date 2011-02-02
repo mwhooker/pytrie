@@ -12,7 +12,15 @@ class Trie(object):
         self.root = TrieNode()
 
     def __len__(self):
-        pass
+        def count(node):
+            len = 0
+            for char in node.children:
+                if node.children[char].value:
+                    len += 1
+                len += count(node.children[char])
+            return len
+
+        return count(self.root)
 
     def __getitem__(self, key):
         node = self.root
