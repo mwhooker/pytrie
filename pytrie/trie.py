@@ -30,7 +30,7 @@ class Trie(object):
         return node.value
 
     def __setitem__(self, key, value):
-        if not len(key):
+        if not key or not len(key):
             raise KeyError('key must be non-empty')
         
         node = self.root
