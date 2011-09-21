@@ -47,6 +47,9 @@ class Trie(object):
         node = parent = self.root
         for char in key:
             if char in node.children:
+                if not len(node.children[char].children) and \
+                   not node.children[char].value:
+                    del node.children[char]
                 parent_char = char
                 parent = node
                 node = node.children[char]
